@@ -18,8 +18,11 @@ Implementación del método MoveToStart, que posiciona al jugador en coordenadas
 CodeManager.cs ➔ Líneas 30 a 53 (Lógica del botón en OnGUI).  
 CodePlayer.cs ➔ Líneas 138 a 151 (Método MoveToStart) y Líneas 299 a 318 (Detección de la tecla 'M').
 
-# Captura
-![ ](./Assets/Screenshots/2.png) ![ ](./Assets/Screenshots/3.png)
+# Capturas
+La captura 1 es el estado de ejemplo
+Captura 2, si se pulsa la M o el botón de Mover a inicio desde el *servidor*, se moveran a la zona inicial todos los jugadores
+Captura 2, si se pulsa la M o el botón de Mover a inicio desde el *cliente*, solo se moverá a si mismo, como en la pestaña superpuesta
+![ ](./Assets/Screenshots/2.png) ![ ](./Assets/Screenshots/3.png)![ ](./Assets/Screenshots/4.png)
 
 ### 4. 
 
@@ -29,7 +32,7 @@ El servidor monitoriza de forma constante la posición del jugador en el plano m
 CodePlayer.cs ➔ Líneas 37 a 46 (Suscripción en OnNetworkSpawn), Líneas 53 a 64 (Métodos de aplicación de color) y Líneas 153 a 170 (Detección de zona central y colores base).
 
 # Captura
-![ ](./Assets/Screenshots/3.png)
+![ ](./Assets/Screenshots/5.png) ![ ](./Assets/Screenshots/6.png)
 
 ### 5. 
 
@@ -38,18 +41,12 @@ Control dinámico del aforo modular utilizando la variable estática MaxPlayersP
 # Código de referencia:
 CodePlayer.cs ➔ Líneas 100 a 104 (Restricción en SimulateMovement), Líneas 215 a 253 (Métodos de validación de aforo) y Líneas 278 a 283 (NotifyFreezeClientRpc).
 
-# Captura
-![ ](./Assets/Screenshots/4.png)
-
 ### 6. 
 
 Definición de arrays estáticos con las paletas de colores obligatorias asignadas a cada equipo en las variables Team1Colors y Team2Colors. Al ingresar a un extremo del plano, el servidor crea una estructura de tipo HashSet para examinar qué tonalidades de la paleta ya están asignadas a los compañeros actuales. El algoritmo descarta las ocupadas y asigna un color aleatorio entre las opciones libres remanentes, garantizando que no se repitan colores dentro del mismo equipo.
 
 # Código de referencia:
 CodePlayer.cs ➔ Líneas 28 a 29 (Declaración de paletas) y Líneas 171 a 211 (Filtrado y asignación aleatoria con HashSet dentro de HandleTeamZonesServer).
-
-# Captura
-![ ](./Assets/Screenshots/5.png)
 
 ### 7. 
 
@@ -60,4 +57,5 @@ CodeManager.cs ➔ Líneas 76 a 95 (Dibujado de botones en StatusLabels) y Líne
 CodePlayer.cs ➔ Líneas 93 a 97 (Función remota UpdateMaxPlayersRpc).
 
 # Captura
-![ ](./Assets/Screenshots/6.png)
+La captura muestra Unity de fondo actuando en modo servidor donde se puede observar los botones de limitacion de equipo mientras que el cliente (ventana flotante delante) soo muestra la opcion de mover a inicio
+![ ](./Assets/Screenshots/7.png)
